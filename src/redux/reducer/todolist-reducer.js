@@ -1,4 +1,5 @@
 import data from "../../todolist/data.json";
+import * as ActionType from "../constant";
 
 const initialState = {
   listTask: data,
@@ -7,7 +8,7 @@ const initialState = {
 const taskReducer = (state = initialState, { type, payload }) => {
   console.log(type, payload);
   switch (type) {
-    case "ADD_TASK": {
+    case ActionType.ADD_TASK: {
       let newTask = {};
       if (payload.textTask !== "") {
         newTask = { ...payload, id: `${Math.floor(Math.random() * 100)}` };
@@ -20,7 +21,7 @@ const taskReducer = (state = initialState, { type, payload }) => {
       return { ...state };
     }
 
-    case "DELETE_TASK": {
+    case ActionType.DELETE_TASK: {
       let listTask = [...state.listTask];
       const index = state.listTask.findIndex((item) => item.id === payload.id);
 
@@ -32,7 +33,7 @@ const taskReducer = (state = initialState, { type, payload }) => {
       return { ...state };
     }
 
-    case "UPDATE_TASK": {
+    case ActionType.UPDATE_TASK: {
       let listTask = [...state.listTask];
       const index = state.listTask.findIndex((item) => item.id === payload.id);
       if (index !== -1) {

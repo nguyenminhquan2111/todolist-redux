@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { actDeleteTask, actUpdateTask } from "../redux/action";
 
 class ItemTask extends Component {
   render() {
@@ -31,18 +32,10 @@ class ItemTask extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleDeleteTask: (task) => {
-      const action = {
-        type: "DELETE_TASK",
-        payload: task,
-      };
-      dispatch(action);
+      dispatch(actDeleteTask(task));
     },
     handleUpdateTask: (task) => {
-      const action = {
-        type: "UPDATE_TASK",
-        payload: task,
-      };
-      dispatch(action);
+      dispatch(actUpdateTask(task));
     },
   };
 };

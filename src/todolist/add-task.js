@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { actAddTask } from "../redux/action";
 
 class AddTask extends Component {
   constructor(props) {
@@ -38,11 +39,7 @@ class AddTask extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     addTask: (newTask) => {
-      const action = {
-        type: "ADD_TASK",
-        payload: newTask,
-      };
-      dispatch(action);
+      dispatch(actAddTask(newTask));
     },
   };
 };
